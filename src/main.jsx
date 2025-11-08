@@ -19,7 +19,8 @@ const router = createBrowserRouter([
     children:[
       {
         index:true,
-        Component:Home
+        Component:Home,
+        loader:()=>fetch("http://localhost:3000/reviewproduct").then(res=>res.json())
       },
       {
         path:'/allreviews',
