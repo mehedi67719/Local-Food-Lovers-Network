@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@plugin "daisyui"{
+    themes: light --default
+};
+
+
+.active{
+    text-decoration: underline;
+     text-underline-offset: 5px; 
+    
+};
+
