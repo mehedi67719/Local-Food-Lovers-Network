@@ -10,6 +10,8 @@ import Allreviews from './Allreviews.jsx';
 import Addreview from './Addreview.jsx';
 import Login from './Login.jsx';
 import Register from './Register.jsx';
+import Authprovider from './Authprovider.jsx';
+import Viewdetels from './Viewdetels.jsx';
 
 
 const router = createBrowserRouter([
@@ -20,11 +22,12 @@ const router = createBrowserRouter([
       {
         index:true,
         Component:Home,
-        loader:()=>fetch("http://localhost:3000/reviewproduct").then(res=>res.json())
+       
       },
       {
         path:'/allreviews',
-        Component:Allreviews
+        Component:Allreviews,
+        loader:()=>fetch("http://localhost:3000/product").then(res=>res.json())
       },
       {
         path:'/addreview',
@@ -37,6 +40,10 @@ const router = createBrowserRouter([
       {
         path:'/register',
         Component:Register
+      },
+      {
+        path:'/viewdetels/:id',
+        Component:Viewdetels
       }
     ]
   },
@@ -46,6 +53,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-     <RouterProvider router={router} />,
+     <Authprovider>
+      <RouterProvider router={router} />,
+     </Authprovider>
   </StrictMode>,
 )
