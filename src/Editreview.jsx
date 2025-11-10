@@ -31,8 +31,33 @@ const Editreview = () => {
 
  
 
-  const handleSave = () => {
-    alert("Save button clicked! (API call later)");
+  const handleSave = (e) => {
+     e.preventDefault(); 
+
+    const updatedReview = {
+    name: e.target.name.value,
+    restaurant: e.target.restaurant.value,
+    location: e.target.location.value,
+    rating: Number(e.target.rating.value),
+    reviewText: e.target.reviewText.value,
+  };
+
+  fetch(`http://localhost:3000/review/${id}`,{
+    method:"PUT",
+    headers: { "Content-Type": "application/json" },
+    body:JSON.stringify(updatedReview)
+  })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        alert("Review updated successfully!");
+        navigate("/myreview");
+      } else {
+        alert("Update failed!");
+      }
+    })
+    .catch(err => console.log(err));
+
   };
 
   
@@ -52,6 +77,7 @@ const Editreview = () => {
             <label className="font-semibold text-gray-700">Food Name</label>
             <input
               type="text"
+              name='name'
               defaultValue={product.name}
               className="input input-bordered w-full"
             />
@@ -61,6 +87,7 @@ const Editreview = () => {
             <label className="font-semibold text-gray-700">Restaurant</label>
             <input
               type="text"
+              name='restaurant'
               defaultValue={product.restaurant}
               className="input input-bordered w-full"
             />
@@ -70,6 +97,7 @@ const Editreview = () => {
             <label className="font-semibold text-gray-700">Location</label>
             <input
               type="text"
+              name='location'
               defaultValue={product.location}
               className="input input-bordered w-full"
             />
@@ -79,6 +107,7 @@ const Editreview = () => {
             <label className="font-semibold text-gray-700">Rating</label>
             <input
               type="number"
+              name='rating'
               defaultValue={product.rating}
               className="input input-bordered w-full"
             />
@@ -88,6 +117,7 @@ const Editreview = () => {
             <label className="font-semibold text-gray-700">Review</label>
             <textarea
               defaultValue={product.reviewText}
+              name='reviewText'
               className="textarea textarea-bordered w-full h-28"
             ></textarea>
           </div>
@@ -95,6 +125,7 @@ const Editreview = () => {
           <div className="flex justify-between mt-6">
             <button
               onClick={handleSave}
+              type='button'
               className="btn-primary "
             >
               Save

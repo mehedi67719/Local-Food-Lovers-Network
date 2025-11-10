@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { Authcontext } from './Authcontext';
 import { FaStar, FaHeart, FaEdit, FaTrash } from "react-icons/fa";
+import Swal from 'sweetalert2';
 
 const Viewdetels = () => {
 
@@ -38,7 +39,28 @@ const Viewdetels = () => {
 
    
 
-    //  console.log(product)
+    const handledelete=()=>{
+        fetch(`http://localhost:3000/review/${product._id}`,{
+            method:"DELETE",
+
+        })
+
+        .then(res=>res.json())
+        .then(()=>{
+             Swal.fire({
+                 title: 'Success!',
+                 text: 'Review Deleted Successfully!',
+                 icon: 'success',
+                 confirmButtonText: 'OK'})
+            navigate("/myreview")
+        })
+        .catch(err=> Swal.fire({
+                title: 'Error!',
+                text: err.message || "Something went wrong",
+                icon: 'error',
+                confirmButtonText: 'OK'
+            }))
+    }
 
 
 
@@ -72,7 +94,7 @@ const Viewdetels = () => {
                                     <FaEdit /> Edit
                                 </button>
                                 <button
-                                    onClick={() => alert("Delete functionality")}
+                                    onClick={handledelete}
                                     className="flex items-center gap-1 btn btn-sm bg-red-500 text-white border-0 hover:bg-red-600"
                                 >
                                     <FaTrash /> Delete
