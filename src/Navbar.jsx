@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import Swal from 'sweetalert2';
 
 import { Authcontext } from './Authcontext';
 import { IoIosArrowDown } from "react-icons/io";
@@ -11,9 +12,23 @@ const Navbar = () => {
   const handleLogout = () => {
     logout()
       .then(() => {
-        alert("Logout successful!");
+        Swal.fire({
+           title: 'Success!',
+           text: 'Login Successfully!',
+           icon: 'success',
+           confirmButtonText: 'OK'
+                       
+          })
       })
-      .catch((err) => console.log(err));
+      .catch((err) => 
+      Swal.fire({
+               title: 'Error!',
+               text: err.message || 'Something went wrong',
+               icon: 'error',
+               confirmButtonText: 'OK'
+                      })
+                    );
+
   };
 
   return (
