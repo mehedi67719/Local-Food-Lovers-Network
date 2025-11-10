@@ -7,22 +7,31 @@ import "slick-carousel/slick/slick-theme.css";
 
 const Home = () => {
 
-    const [loading,setloading]=useState(true)
-    const [products,setproducts]=useState(null)
+    const [loading, setLoading] = useState(true);
+    const [products, setProducts] = useState([]);
+    const [lover, setLover] = useState([]);
 
 
-    useEffect(()=>{
+    useEffect(() => {
         fetch("http://localhost:3000/reviewproduct")
-        .then(res=>res.json())
-        .then(data=>{
-            setproducts(data)
-            setloading(false)
-        })
+            .then(res => res.json())
+            .then(data => {
+                setProducts(data);
+                setLoading(false);
+            })
+            .catch(err => console.log(err));
+    }, []);
 
-        .catch(err=>console.log(err))
-    },[])
 
-    
+    useEffect(() => {
+        fetch("http://localhost:3000/foodlover")
+            .then(res => res.json())
+            .then(data => {
+                setLover(data);
+                setLoading(false);
+            })
+            .catch(err => console.log(err));
+    }, []);
 
     const settings = {
         dots: true,
@@ -33,7 +42,7 @@ const Home = () => {
         autoplay: true,
         autoplaySpeed: 3000,
         arrows: true,
-    }
+    };
 
     const banners = [
         {
@@ -50,7 +59,7 @@ const Home = () => {
         }
     ];
 
-        if (loading) {
+    if (loading) {
         return (
             <div className="flex justify-center items-center min-h-screen">
                 <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-purple-500"></div>
@@ -59,9 +68,9 @@ const Home = () => {
     }
 
     return (
-        <div className=' bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 pb-10'>
+        <div className='bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 pb-10'>
 
-          
+         
             <div className="max-w-full mb-10 relative">
                 <Slider {...settings}>
                     {banners.map((banner, index) => (
@@ -71,7 +80,6 @@ const Home = () => {
                                 alt={`banner-${index}`}
                                 className="w-full h-96 sm:h-[28rem] lg:h-[32rem] object-cover rounded-lg shadow-lg"
                             />
-                           
                             <div className="absolute inset-0 flex items-center justify-center">
                                 <h2 className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold bg-black/40 px-4 py-2 rounded">
                                     {banner.text}
@@ -82,7 +90,7 @@ const Home = () => {
                 </Slider>
             </div>
 
-     
+         
             <h2 className="text-3xl font-bold text-center text-black mb-10">
                 Top Rated Reviews
             </h2>
@@ -93,11 +101,33 @@ const Home = () => {
                 ))}
             </div>
 
-          <NavLink className='flex justify-center my-5' to='/allreviews'>
-              <button className="btn-primary">
-                Show All
-            </button>
-          </NavLink>
+            <NavLink className='flex justify-center my-5' to='/allreviews'>
+                <button className="btn-primary">
+                    Show All
+                </button>
+            </NavLink>
+
+         
+            <div className='bg-white p-5 rounded-xl max-w-6xl mx-auto overflow-x-hidden'>
+                <h2 className='my-5 text-3xl font-bold text-center'>Some Food Lovers</h2>
+                <div className='my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
+
+                    {lover.map(man => (
+                        <div key={man._id} className='flex flex-col items-center'>
+                            <div className='w-full max-w-[200px] h-[200px] overflow-hidden rounded-full'>
+                                <img
+                                    className='w-full h-full object-cover'
+                                    src={man.photo}
+                                    alt={man.name}
+                                />
+                            </div>
+                            <h2 className='text-2xl font-bold text-center mt-4'>{man.name}</h2>
+                            <p className='text-center mt-1'>Rating: {man.rating}</p>
+                        </div>
+                    ))}
+
+                </div>
+            </div>
 
         </div>
     );
