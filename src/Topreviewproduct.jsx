@@ -26,7 +26,7 @@ const Topreviewproduct = ({product}) => {
 
                             <div className="flex justify-between">
                                <NavLink to={`/viewdetels/${product._id}`}>
-                                 <button className="btn btn-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-pink-500 hover:to-purple-500 border-0">
+                                 <button className="btn-primary">
                                     View Details
                                 </button>
                                </NavLink>

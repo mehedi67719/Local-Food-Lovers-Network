@@ -12,6 +12,8 @@ import Login from './Login.jsx';
 import Register from './Register.jsx';
 import Authprovider from './Authprovider.jsx';
 import Viewdetels from './Viewdetels.jsx';
+import Editreview from './Editreview.jsx';
+import Myreview from './Myreview.jsx';
 
 
 const router = createBrowserRouter([
@@ -27,7 +29,7 @@ const router = createBrowserRouter([
       {
         path:'/allreviews',
         Component:Allreviews,
-        loader:()=>fetch("http://localhost:3000/product").then(res=>res.json())
+        
       },
       {
         path:'/addreview',
@@ -44,6 +46,14 @@ const router = createBrowserRouter([
       {
         path:'/viewdetels/:id',
         Component:Viewdetels
+      },
+      {
+        path:"/editreview/:id",
+        Component:Editreview
+      },
+      {
+        path:'/myreview',
+        Component:Myreview
       }
     ]
   },

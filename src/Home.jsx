@@ -93,8 +93,8 @@ const Home = () => {
                 ))}
             </div>
 
-          <NavLink to='/allreviews'>
-              <button className="bg-white/90 flex mx-auto mt-10 hover:bg-gray-200 text-gray-800 font-semibold py-2 px-6 rounded-lg transition-all duration-300">
+          <NavLink className='flex justify-center my-5' to='/allreviews'>
+              <button className="btn-primary">
                 Show All
             </button>
           </NavLink>

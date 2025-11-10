@@ -8,20 +8,22 @@ const Viewdetels = () => {
     const {user}=useContext(Authcontext)
     const navigate=useNavigate()
 
-    const [products,setproducts]=useState(null)
+    const [product,setproduct]=useState(null)
     const [loading,setloading]=useState(true)
 
     const {id}=useParams();
+
+
     // console.log(id)
     useEffect(()=>{
-        fetch("http://localhost:3000/product")
+        fetch(`http://localhost:3000/review/${id}`)
         .then(res=>res.json())
         .then(data=>{
-            setproducts(data)
+            setproduct(data)
             setloading(false)
         })
         .catch(err=>console.log(err))
-    },[])
+    },[id])
 
     // console.log(products)
 
@@ -34,7 +36,7 @@ const Viewdetels = () => {
     }
 
 
-     const product=products.find(data=>data._id==id)
+   
 
     //  console.log(product)
 

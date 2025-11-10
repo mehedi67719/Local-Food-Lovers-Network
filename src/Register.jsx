@@ -119,7 +119,7 @@ const Register = () => {
                     <div>
                         <button
                             type="submit"
-                            className="btn btn-primary w-full bg-gradient-to-r from-purple-500 to-pink-500 border-0 hover:from-pink-500 hover:to-purple-500"
+                            className="btn-primary !w-full "
                         >
                             Register
                         </button>

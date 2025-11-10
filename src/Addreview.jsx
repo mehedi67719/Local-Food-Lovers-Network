@@ -45,13 +45,13 @@ const Addreview = () => {
             category
         };
 
-        fetch("http://localhost:3000/product", {
+        fetch("http://localhost:3000/review", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newreview)
         })
         .then(res => res.json())
-        .then(data => {
+        .then(() => {
             e.target.reset();
             Swal.fire({
                 title: 'Success!',
@@ -59,7 +59,7 @@ const Addreview = () => {
                 icon: 'success',
                 confirmButtonText: 'OK'
             }).then(() => {
-                navigate('/allreviews'); // OK click করলে navigate হবে
+                navigate('/allreviews'); 
             });
         })
         .catch(err => {
@@ -142,7 +142,7 @@ const Addreview = () => {
                     />
                     <button
                         type="submit"
-                        className="btn w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold border-0 hover:from-pink-500 hover:to-purple-500"
+                        className="btn-primary !w-full"
                     >
                         Add Review
                     </button>

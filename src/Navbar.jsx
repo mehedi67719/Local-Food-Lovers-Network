@@ -56,7 +56,7 @@ const Navbar = () => {
                 Add Review
               </NavLink>
               <NavLink
-                to="/myreviews"
+                to="/myreview"
                 className="block px-4 py-2 hover:bg-purple-100 rounded"
                 onClick={() => setOpen(false)}
               >
@@ -85,10 +85,10 @@ const Navbar = () => {
       ) : (
         <div className='flex flex-col items-center md:flex-row lg:flex-row gap-5'>
           <NavLink to='/login'>
-            <button className="btn btn-success font-bold">Login</button>
+            <button className="btn-primary">Login</button>
           </NavLink>
           <NavLink to='/register'>
-            <button className="btn btn-success font-bold hidden lg:block">Register</button>
+            <button className="btn-primary">Register</button>
           </NavLink>
         </div>
       )}
