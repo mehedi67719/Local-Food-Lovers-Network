@@ -14,6 +14,7 @@ import Authprovider from './Authprovider.jsx';
 import Viewdetels from './Viewdetels.jsx';
 import Editreview from './Editreview.jsx';
 import Myreview from './Myreview.jsx';
+import Privaterouter from './Privaterouter.jsx';
 
 
 const router = createBrowserRouter([
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/addreview',
-        Component:Addreview
+        element:<Privaterouter><Addreview></Addreview></Privaterouter>
       },
       {
         path:'/login',
@@ -49,11 +50,11 @@ const router = createBrowserRouter([
       },
       {
         path:"/editreview/:id",
-        Component:Editreview
+        element:<Privaterouter><Editreview></Editreview></Privaterouter>
       },
       {
         path:'/myreview',
-        Component:Myreview
+        element:<Privaterouter><Myreview></Myreview></Privaterouter>
       }
     ]
   },

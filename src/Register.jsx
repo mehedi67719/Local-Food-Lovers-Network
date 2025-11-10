@@ -2,13 +2,17 @@ import React, {   useContext } from 'react';
 import { Authcontext } from './Authcontext';
 import { updateProfile } from 'firebase/auth';
 import { useNavigate } from 'react-router';
+import Swal from 'sweetalert2';
+
 
 const Register = () => {
 
  
     const navigate=useNavigate()
 
+    const{singinwithgoogle}=useContext(Authcontext)
     const {createuser}=useContext(Authcontext)
+
     const handleRegister=(e)=>{
         e.preventDefault();
         const name=e.target.name.value;
@@ -19,23 +23,50 @@ const Register = () => {
 
 
         if(password !==confirmPassword){
-            alert("Passwords do not match!")
-            return;
+                 Swal.fire({
+            title: 'Error!',
+            text: 'Password not match',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+        return;
         }
+
+
+         if(password.length < 6 || !/[A-Z]/.test(password) || !/[a-z]/.test(password)){
+        Swal.fire({
+            title: 'Error!',
+            text: 'Password must be at least 6 characters long and include uppercase and lowercase letters.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+        return;
+    }
+
 
         createuser(email,password)
         .then((userCredential)=>{
              const createdUser = userCredential.user; 
             updateProfile(createdUser,{displayName: name, photoURL: photo})
             
-            .then(() => console.log("Profile updated"))
-            console.log('profile updated')
-            alert("registation succussfull")
+            .then(() =>  Swal.fire({
+                title: 'Success!',
+                text: 'Registation Successfully!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }))
+            
+            
     
         })
 
         .catch(err=>{
-            console.log(err)
+           Swal.fire({
+               title: 'Error!',
+               text: err.message || 'Something went wrong',
+               icon: 'error',
+               confirmButtonText: 'OK'
+           });
         })
         e.target.reset()
 
@@ -43,6 +74,28 @@ const Register = () => {
        
     }
 
+     const registerWithGoogle = () => {
+            singinwithgoogle()
+                .then(() => {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Login Successfully!',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    })
+                    .then(() => {
+                        navigate('/');
+                    });
+                })
+                .catch(err => {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: err.message || 'Something went wrong',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                });
+        }
 
 
 
@@ -124,6 +177,22 @@ const Register = () => {
                             Register
                         </button>
                     </div>
+                    
+                <button
+                    onClick={registerWithGoogle}
+                    className="btn-primary w-full my-5 flex items-center justify-center gap-2 !w-full"
+                >
+                    <svg aria-label="Google logo" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <g>
+                            <path d="m0 0H512V512H0" fill="#fff"></path>
+                            <path fill="#34a853" d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"></path>
+                            <path fill="#4285f4" d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"></path>
+                            <path fill="#fbbc02" d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"></path>
+                            <path fill="#ea4335" d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"></path>
+                        </g>
+                    </svg>
+                    Register with Google
+                </button>
                 </form>
 
               

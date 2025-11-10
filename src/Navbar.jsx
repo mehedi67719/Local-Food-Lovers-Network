@@ -63,6 +63,7 @@ const Navbar = () => {
          
           {open && (
             <div className='absolute right-0 mt-3 w-52 bg-white shadow-xl rounded-xl py-3 animate-fadeIn z-50'>
+              <p className="px-4 py-2 text-2xl text-green-500 font-bold"> {user.displayName}</p>
               <NavLink
                 to="/addreview"
                 className="block px-4 py-2 hover:bg-purple-100 rounded"
