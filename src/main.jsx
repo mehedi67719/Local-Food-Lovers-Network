@@ -16,6 +16,7 @@ import Editreview from './Editreview.jsx';
 import Myreview from './Myreview.jsx';
 import Privaterouter from './Privaterouter.jsx';
 import Myfavorite from './Myfavorite.jsx';
+import Error404 from './Error404.jsx';
 
 
 const router = createBrowserRouter([
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
       {
         path:"/favorites",
         element:<Privaterouter><Myfavorite></Myfavorite></Privaterouter>
+      },
+      {
+        path: "*",
+        Component: Error404
       }
     ]
   },

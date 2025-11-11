@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
+import error from "../src/assets/error.avif"
 
 const Error404 = () => {
   const navigate = useNavigate();
@@ -7,7 +8,7 @@ const Error404 = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-purple-200 via-pink-200 to-yellow-200 p-5">
       <img
-        src="https://media.giphy.com/media/14uQ3cOFteDaU/giphy.gif"
+        src={error}
         alt="404 Not Found"
         className="w-80 sm:w-96 mb-8"
       />
