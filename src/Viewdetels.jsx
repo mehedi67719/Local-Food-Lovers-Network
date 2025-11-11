@@ -5,32 +5,33 @@ import { FaStar, FaHeart, FaEdit, FaTrash } from "react-icons/fa";
 import Swal from 'sweetalert2';
 
 const Viewdetels = () => {
-
     const { user } = useContext(Authcontext);
     const navigate = useNavigate();
 
     const [product, setProduct] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [favorite, setFavorite] = useState([]);
+    const [loader, setLoader] = useState(true);
 
     const { id } = useParams();
 
+    
     useEffect(() => {
         fetch(`http://localhost:3000/review/${id}`)
             .then(res => res.json())
             .then(data => {
                 setProduct(data);
-                setLoading(false);
+                setLoader(false);
             })
             .catch(err => console.log(err));
     }, [id]);
 
-    if (loading) {
-        return (
-            <div className="flex justify-center items-center min-h-screen">
-                <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-purple-500"></div>
-            </div>
-        );
-    }
+   
+    useEffect(() => {
+        fetch("http://localhost:3000/favorite")
+            .then(res => res.json())
+            .then(data => setFavorite(data))
+            .catch(err => console.log(err));
+    }, []);
 
     const handleDelete = () => {
         Swal.fire({
@@ -45,28 +46,65 @@ const Viewdetels = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 fetch(`http://localhost:3000/review/${product._id}`, {
-                    method: "DELETE",
+                    method: "DELETE"
                 })
                 .then(res => res.json())
                 .then(() => {
-                    Swal.fire(
-                        'Deleted!',
-                        'Your review has been deleted.',
-                        'success'
-                    );
+                    Swal.fire('Deleted!', 'Your review has been deleted.', 'success');
                     navigate("/myreview");
                 })
-                .catch(err =>
-                    Swal.fire({
-                        title: 'Error!',
-                        text: err.message || "Something went wrong",
-                        icon: 'error',
-                        confirmButtonText: 'OK'
-                    })
-                );
+                .catch(err => Swal.fire({
+                    title: 'Error!',
+                    text: err.message || "Something went wrong",
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                }));
             }
         });
+    };
+
+    const handelclick = (id, name, image) => {
+        if (!user) return;
+
+        const newobject = {
+            productname: name,
+            image: image,
+            useremail: user.email,
+            username: user.displayName,
+            productid: id
+        };
+
+        fetch("http://localhost:3000/favoritepost", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(newobject)
+        })
+        .then(res => res.json())
+        .then(() => {
+            Swal.fire({
+                icon: 'success',
+                title: 'Added to Favorites',
+                showConfirmButton: false,
+                timer: 1500
+            });
+            setFavorite(prev => [...prev, newobject]);
+        })
+        .catch(err => Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: err.message || 'Something went wrong!'
+        }));
+    };
+
+    if (loader) {
+        return (
+            <div className="flex justify-center items-center min-h-screen">
+                <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-purple-500"></div>
+            </div>
+        );
     }
+
+    const filterfavorite = favorite.find(data => data.productid === product._id && data.useremail === user?.email);
 
     return (
         <div className="min-h-screen bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 py-10">
@@ -88,7 +126,14 @@ const Viewdetels = () => {
                     <p className="text-gray-800 mb-5">{product.reviewText}</p>
 
                     <div className="flex items-center justify-between">
-                        <FaHeart className="text-2xl text-red-500 cursor-pointer" title="Add to Favorites" />
+                        <button
+                            type='button'
+                            disabled={!!filterfavorite}
+                            onClick={() => handelclick(product._id, product.name, product.image)}
+                        >
+                            <FaHeart className={filterfavorite ? 'text-2xl text-red-600' : 'text-2xl'} />
+                        </button>
+
                         {user && user.email === product.userEmail && (
                             <div className="flex gap-3">
                                 <button

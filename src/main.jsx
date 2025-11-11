@@ -15,6 +15,7 @@ import Viewdetels from './Viewdetels.jsx';
 import Editreview from './Editreview.jsx';
 import Myreview from './Myreview.jsx';
 import Privaterouter from './Privaterouter.jsx';
+import Myfavorite from './Myfavorite.jsx';
 
 
 const router = createBrowserRouter([
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       {
         path:'/myreview',
         element:<Privaterouter><Myreview></Myreview></Privaterouter>
+      },
+      {
+        path:"/favorites",
+        element:<Privaterouter><Myfavorite></Myfavorite></Privaterouter>
       }
     ]
   },

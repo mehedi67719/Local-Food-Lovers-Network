@@ -39,6 +39,7 @@ const Navbar = () => {
         <NavLink to='/' className='hover:text-orange-500'>Home</NavLink>
         <NavLink to='/allreviews' className='hover:text-orange-500'>All Reviews</NavLink>
         <NavLink to='/addreview' className='hover:text-orange-500'>Add Review</NavLink>
+       
       </div>
 
       {user ? (

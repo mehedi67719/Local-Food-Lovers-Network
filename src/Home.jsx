@@ -10,6 +10,7 @@ const Home = () => {
     const [loading, setLoading] = useState(true);
     const [products, setProducts] = useState([]);
     const [lover, setLover] = useState([]);
+    const [restaruant,setrestaruant]=useState([])
 
 
     useEffect(() => {
@@ -32,6 +33,19 @@ const Home = () => {
             })
             .catch(err => console.log(err));
     }, []);
+
+    useEffect(()=>{
+        fetch("http://localhost:3000/toprestaurants")
+        .then(res=>res.json())
+        .then(data=>{
+            setrestaruant(data)
+             setLoading(false)
+        })
+       .catch(err=>console.log(err))
+    },[])
+
+   
+     
 
     const settings = {
         dots: true,
@@ -128,6 +142,27 @@ const Home = () => {
 
                 </div>
             </div>
+            <div>
+        </div>
+
+<div className='bg-amber-100 max-w-full mx-auto p-10 my-10 w-full'>
+    <h2 className='text-3xl font-bold text-center my-10'>Top Restaurants</h2>
+    <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center '>
+    
+    {
+        restaruant.map(data=>
+            <div className='p-2 bg-white rounded-xl w-2xs h-2xs'>
+                <img className=' rounded-xl' src={data.image} alt="" />
+
+                <h2 className='text-xl font-bold'>{data._id}</h2>
+                <p >totalReviews:{data.totalReviews}</p>
+                <p className='text-orange-300 font-bold'>averageRating:{data.averageRating}</p>
+                <p>location:{data.location}</p>
+            </div>
+        )
+    }
+</div>
+</div>
 
         </div>
     );

@@ -8,7 +8,6 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-
     const from = location.state?.from?.pathname || '/';
 
     const handleLogin = (e) => {
@@ -18,14 +17,7 @@ const Login = () => {
 
         signInWithEmailAndPass(email, password)
             .then(() => {
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Login Successfully!',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then(() => {
-                    navigate(from, { replace: true }); 
-                });
+                navigate(from, { replace: true }); 
             })
             .catch(err => {
                 Swal.fire({
@@ -40,15 +32,7 @@ const Login = () => {
     const loginWithGoogle = () => {
         singinwithgoogle()
             .then(() => {
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Login Successfully!',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                })
-                .then(() => {
-                    navigate(from, { replace: true });
-                });
+                navigate(from, { replace: true }); 
             })
             .catch(err => {
                 Swal.fire({
