@@ -10,7 +10,7 @@ const Myreview = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:3000/myreview?email=${user.email}`)
+            fetch(`https://food-lovers-backend.vercel.app/myreview?email=${user.email}`)
                 .then(res => res.json())
                 .then(data => {
                     setMyReviews(data);
@@ -23,13 +23,7 @@ const Myreview = () => {
         }
     }, [user]);
 
-    if (loader) {
-        return (
-            <div className="flex justify-center items-center min-h-screen">
-                <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-purple-500"></div>
-            </div>
-        );
-    }
+
 
     const handleDelete = (id) => {
         Swal.fire({
@@ -43,7 +37,7 @@ const Myreview = () => {
             cancelButtonText: 'Cancel'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/review/${id}`, {
+                fetch(`https://food-lovers-backend.vercel.app/review/${id}`, {
                     method: "DELETE",
                 })
                 .then(res => res.json())
@@ -67,6 +61,13 @@ const Myreview = () => {
         });
     }
 
+        if (loader) {
+        return (
+            <div className="flex justify-center items-center min-h-screen">
+                <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-purple-500"></div>
+            </div>
+        );
+    }
     return (
         <div className="bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 p-4 md:p-6 min-h-screen">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-gray-800">

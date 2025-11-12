@@ -13,7 +13,7 @@ const Allreviews = () => {
 
 
   useEffect(() => {
-    fetch("http://localhost:3000/favorite")
+    fetch("https://food-lovers-backend.vercel.app/favorite")
       .then(res => res.json())
       .then(data => {
         setFavorite(data);
@@ -34,7 +34,7 @@ const Allreviews = () => {
       productid: id
     };
 
-    fetch("http://localhost:3000/favoritepost", {
+    fetch("https://food-lovers-backend.vercel.app/favoritepost", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newObject)
@@ -63,8 +63,8 @@ const Allreviews = () => {
   const fetchData = (query = "") => {
     setLoading(true);
     const url = query
-      ? `http://localhost:3000/search?name=${query}`
-      : "http://localhost:3000/review";
+      ? `https://food-lovers-backend.vercel.app/search?name=${query}`
+      : "https://food-lovers-backend.vercel.app/review";
 
     fetch(url)
       .then(res => res.json())

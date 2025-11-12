@@ -11,7 +11,7 @@ const Myfavorite = () => {
  
 
     useEffect(()=>{
-        fetch("http://localhost:3000/favorite")
+        fetch("https://food-lovers-backend.vercel.app/favorite")
         .then(res=>res.json())
         .then(data=>{
             mysetfavorite(data)
@@ -42,7 +42,7 @@ const favorite=myfavorite.filter(data=>data.useremail==user?.email);
             cancelButtonText: 'Cancel'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/favorite/${id}`, {
+                fetch(`https://food-lovers-backend.vercel.app/favorite/${id}`, {
                     method: "DELETE",
                 })
                 .then(res => res.json())

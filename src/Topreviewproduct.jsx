@@ -11,7 +11,7 @@ const Topreviewproduct = ({product}) => {
     const [loader,setloader]=useState(true)
 
     useEffect(()=>{
-        fetch("http://localhost:3000/favorite")
+        fetch("https://food-lovers-backend.vercel.app/favorite")
         .then(res=>res.json())
         .then(data=>{
             setfavorite(data)
@@ -31,7 +31,7 @@ const Topreviewproduct = ({product}) => {
             productid:id
         }
 
-        fetch("http://localhost:3000/favoritepost", {
+        fetch("https://food-lovers-backend.vercel.app/favoritepost", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newobject)

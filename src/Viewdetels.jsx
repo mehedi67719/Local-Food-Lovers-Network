@@ -16,7 +16,7 @@ const Viewdetels = () => {
 
     
     useEffect(() => {
-        fetch(`http://localhost:3000/review/${id}`)
+        fetch(`https://food-lovers-backend.vercel.app/review/${id}`)
             .then(res => res.json())
             .then(data => {
                 setProduct(data);
@@ -27,7 +27,7 @@ const Viewdetels = () => {
 
    
     useEffect(() => {
-        fetch("http://localhost:3000/favorite")
+        fetch("https://food-lovers-backend.vercel.app/favorite")
             .then(res => res.json())
             .then(data => setFavorite(data))
             .catch(err => console.log(err));
@@ -45,7 +45,7 @@ const Viewdetels = () => {
             cancelButtonText: 'Cancel'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/review/${product._id}`, {
+                fetch(`https://food-lovers-backend.vercel.app/review/${product._id}`, {
                     method: "DELETE"
                 })
                 .then(res => res.json())
@@ -74,7 +74,7 @@ const Viewdetels = () => {
             productid: id
         };
 
-        fetch("http://localhost:3000/favoritepost", {
+        fetch("https://food-lovers-backend.vercel.app/favoritepost", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newobject)

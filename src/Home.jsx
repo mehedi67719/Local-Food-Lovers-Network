@@ -14,7 +14,7 @@ const Home = () => {
 
 
     useEffect(() => {
-        fetch("http://localhost:3000/reviewproduct")
+        fetch("https://food-lovers-backend.vercel.app/reviewproduct")
             .then(res => res.json())
             .then(data => {
                 setProducts(data);
@@ -25,7 +25,7 @@ const Home = () => {
 
 
     useEffect(() => {
-        fetch("http://localhost:3000/foodlover")
+        fetch("https://food-lovers-backend.vercel.app/foodlover")
             .then(res => res.json())
             .then(data => {
                 setLover(data);
@@ -35,7 +35,7 @@ const Home = () => {
     }, []);
 
     useEffect(()=>{
-        fetch("http://localhost:3000/toprestaurants")
+        fetch("https://food-lovers-backend.vercel.app/toprestaurants")
         .then(res=>res.json())
         .then(data=>{
             setrestaruant(data)

@@ -11,7 +11,7 @@ const EditReview = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:3000/review/${id}`)
+    fetch(`https://food-lovers-backend.vercel.app/review/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setReviewData(data);
@@ -43,7 +43,7 @@ const EditReview = () => {
       reviewText: e.target.reviewText.value,
     };
 
-    fetch(`http://localhost:3000/review/${id}`, {
+    fetch(`https://food-lovers-backend.vercel.app/review/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedReview),
