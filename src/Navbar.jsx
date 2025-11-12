@@ -92,10 +92,10 @@ const Navbar = () => {
           ) : (
             <div className='flex gap-4'>
               <NavLink to='/login'>
-                <button className="text-white bg-orange-500 px-4 py-1 rounded-md hover:bg-orange-600 transition-colors">Login</button>
+                <button className="text-white bg-orange-500 px-4 py-1 rounded-md btn-primary">Login</button>
               </NavLink>
               <NavLink to='/register'>
-                <button className="text-white bg-orange-500 px-4 py-1 rounded-md hover:bg-orange-600 transition-colors">Register</button>
+                <button className="text-white bg-orange-500 px-4 py-1 rounded-md btn-primary">Register</button>
               </NavLink>
             </div>
           )}
@@ -126,10 +126,10 @@ const Navbar = () => {
           ) : (
             <>
               <NavLink to='/login' onClick={() => setMenuOpen(false)}>
-                <button className="text-white bg-orange-500 w-full py-2 rounded-md hover:bg-orange-600 transition-colors">Login</button>
+                <button className="text-white bg-orange-500 !w-full py-2 rounded-md btn-primary">Login</button>
               </NavLink>
               <NavLink to='/register' onClick={() => setMenuOpen(false)}>
-                <button className="text-white bg-orange-500 w-full py-2 rounded-md hover:bg-orange-600 transition-colors">Register</button>
+                <button className="text-white bg-orange-500 !w-full py-2 rounded-md btn-primary">Register</button>
               </NavLink>
             </>
           )}

@@ -29,8 +29,8 @@ const Footer = () => {
 
                     {!user && (
                         <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
-                            <NavLink to="/login" className="text-white bg-orange-500 px-4 py-1 rounded-md hover:bg-orange-600 transition-colors">Login</NavLink>
-                            <NavLink to="/register" className="text-white bg-orange-500 px-4 py-1 rounded-md hover:bg-orange-600 transition-colors">Register</NavLink>
+                            <NavLink to="/login" className="text-white bg-orange-500 px-4 py-1 rounded-md btn-primary">Login</NavLink>
+                            <NavLink to="/register" className="text-white bg-orange-500 px-4 py-1 rounded-md btn-primary">Register</NavLink>
                         </div>
                     )}
                 </div>
