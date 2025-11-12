@@ -124,7 +124,7 @@ const Home = () => {
          
             <div className='bg-white p-5 rounded-xl max-w-6xl mx-auto overflow-x-hidden'>
                 <h2 className='my-5 text-3xl font-bold text-center'>Some Food Lovers</h2>
-                <div className='my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
+                <div className='my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6'>
 
                     {lover.map(man => (
                         <div key={man._id} className='flex flex-col items-center'>
@@ -147,7 +147,7 @@ const Home = () => {
 
 <div className='bg-amber-100 max-w-full mx-auto p-10 my-10 w-full'>
     <h2 className='text-3xl font-bold text-center my-10'>Top Restaurants</h2>
-    <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center '>
+    <div className=' grid grid-cols-1 gap-5 md:gap-5 lg:gap-0 md:grid-cols-2 lg:grid-cols-4 justify-items-center '>
     
     {
         restaruant.map(data=>
