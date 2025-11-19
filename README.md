@@ -1,6 +1,7 @@
 # 🌐 Local Food Lovers Network — Client Side (Frontend)
 
 ### 🔗 **Live Site:** [Click Here](https://food-lovers-450c0.web.app/)  
+💻 **Local Food Lovers Network Repository:** [GitHub Link](https://github.com/mehedi67719/Local-Food-Lovers-Network.git)
 ### 💻 **Server Repository:** [GitHub Link](https://github.com/mehedi67719/Food-Lovers-backend.git)
 
 ---
