@@ -1,8 +1,7 @@
 # 🌐 Local Food Lovers Network — Client Side (Frontend)
 
-### 🔗 **Live Site:** https://food-lovers-450c0.web.app/  
-### 💻 **Server Repository:  https://github.com/mehedi67719/Food-Lovers-backend.git
-
+### 🔗 **Live Site:** [Click Here](https://food-lovers-450c0.web.app/)  
+### 💻 **Server Repository:** [GitHub Link](https://github.com/mehedi67719/Food-Lovers-backend.git)
 
 ---
 
@@ -16,6 +15,15 @@ A modern MERN-based community platform where users explore food, post reviews, s
 
 Local Food Lovers Network is a full-stack MERN application designed to connect food lovers who enjoy discovering restaurants, street food, and homemade dishes.  
 The frontend is built using **React**, focusing on responsive design, smooth navigation, and clean UI/UX.
+
+---
+
+## 📸 Screenshot
+
+<!-- Add your screenshot here -->
+<p align="center">
+  <img src="https://github.com/mehedi67719/assets/raw/main/food-lovers-screenshot.png" alt="Local Food Lovers Screenshot" width="80%" />
+</p>
 
 ---
 
@@ -54,7 +62,7 @@ The frontend is built using **React**, focusing on responsive design, smooth nav
 
 ---
 
-## 📸 Pages Included
+## 📄 Pages Included
 
 - Home Page  
 - Login Page  
@@ -76,10 +84,19 @@ The frontend is built using **React**, focusing on responsive design, smooth nav
 - Firebase Authentication  
 - Tailwind CSS  
 - Fetch API / Axios  
-- sweet alert Notifications  
+- SweetAlert Notifications  
 
 ---
 
+## ⚙️ Dependencies
+
+- react  
+- react-dom  
+- react-router-dom  
+- react-hook-form  
+- firebase  
+- tailwindcss   
+- sweetalert2  
 
 ---
 
@@ -104,6 +121,11 @@ The frontend is built using **React**, focusing on responsive design, smooth nav
 ## 📝 How to Run Locally
 
 ```bash
+# Clone the repository
+git clone https://github.com/mehedi67719/Food-Lovers-frontend.git
+
+# Install dependencies
 npm install
+
+# Run development server
 npm run dev
-   
