@@ -23,7 +23,7 @@ The frontend is built using **React**, focusing on responsive design, smooth nav
 
 <!-- Add your screenshot here -->
 <p align="center">
-  <img src="https://github.com/mehedi67719/assets/raw/main/food-lovers-screenshot.png" alt="Local Food Lovers Screenshot" width="80%" />
+  <img src="https://github.com/mehedi67719/assets/blob/main/Screenshot%202025-11-19%20155729.png" alt="Local Food Lovers Screenshot" width="80%" />
 </p>
 
 ---
